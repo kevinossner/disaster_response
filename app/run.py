@@ -95,23 +95,45 @@ def index():
         {
             'data': [
                 Bar(
-                    x=label_names,
-                    y=label_sums,
+                    x=cats,
+                    y=cat_p
                 )
             ],
 
             'layout': {
-                'title': 'Distribution of categories',
+                'title': 'Proportion of Messages <br> by Category',
                 'yaxis': {
-                    'title': "Count"
+                    'title': "Proportion",
+                    'automargin':True
                 },
                 'xaxis': {
+                    'title': "Category",
+                    'tickangle': -40,
+                    'automargin':True
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=words,
+                    y=count_props
+                )
+            ],
 
+            'layout': {
+                'title': 'Frequency of top 10 words <br> as percentage',
+                'yaxis': {
+                    'title': 'Occurrence<br>(Out of 100)',
+                    'automargin': True
                 },
+                'xaxis': {
+                    'title': 'Top 10 words',
+                    'automargin': True
+                }
             }
         }
-
-]
+    ]
     
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
